@@ -27,18 +27,6 @@
 
 ---
 
-# 🔗 Repositorio
-
-El código fuente completo del proyecto se encuentra disponible en GitHub:
-
-<p align="center">
-
-<a href="https://github.com/ANDresC-1A/bingo-claudenova">
-https://github.com/ANDresC-1A/bingo-claudenova
-</a>
-
-</p>
-
 ---
 
 # 📌 Descripción
@@ -918,15 +906,6 @@ El código forma parte del proyecto **Bingo ClaudeNova**.
 
 ---
 
-# 🔗 Enlaces
-
-### 📦 Repositorio
-
-<p align="center">
-<a href="https://github.com/ANDresC-1A/bingo-claudenova">
-  https://github.com/ANDresC-1A/bingo-claudenova
-</a>
-</p>
 
 ---
 
