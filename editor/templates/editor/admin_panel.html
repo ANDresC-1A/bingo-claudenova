@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Admin | Bingo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-deep: #0d0b1f;
+            --bg-mid: #1a1040;
+            --purple: #7c3aed;
+            --purple-light: #a78bfa;
+            --gold: #fbbf24;
+            --gold-dim: #92702a;
+            --card-bg: rgba(30, 24, 64, 0.55);
+            --card-border: rgba(167, 139, 250, 0.25);
+            --text-dim: #b8b0d9;
+
+            /* Colores tradicionales de letras de BINGO */
+            --b-color: #ef4444;
+            --i-color: #3b82f6;
+            --n-color: #fbbf24;
+            --g-color: #22c55e;
+            --o-color: #a855f7;
+        }
+
+        html, body {
+            min-height: 100vh;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(124, 58, 237, 0.35), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(251, 191, 36, 0.12), transparent 40%),
+                linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-mid) 55%, #241454 100%);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            padding: 30px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* estrellitas decorativas sutiles, como el fondo de referencia */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.5) 0, transparent 50%),
+                radial-gradient(2px 2px at 70% 15%, rgba(255,255,255,0.4) 0, transparent 50%),
+                radial-gradient(1.5px 1.5px at 90% 60%, rgba(255,255,255,0.35) 0, transparent 50%),
+                radial-gradient(2px 2px at 40% 80%, rgba(255,255,255,0.3) 0, transparent 50%),
+                radial-gradient(1.5px 1.5px at 10% 70%, rgba(255,255,255,0.35) 0, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .admin-container {
+            position: relative;
+            z-index: 1;
+            max-width: 620px;
+            width: 100%;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--card-border);
+            border-radius: 22px;
+            padding: 34px;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03) inset;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 26px;
+        }
+
+        .badge-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, var(--purple), #4c1d95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.45);
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+            color: var(--gold);
+            text-shadow: 0 2px 12px rgba(251, 191, 36, 0.35);
+            line-height: 1.4;
+        }
+
+        .status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.28);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            margin-bottom: 22px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .status strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .status .count-wrap {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .info-box {
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 22px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--purple-light);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .ball-display-wrap {
+            display: flex;
+            justify-content: center;
+        }
+
+        .ball-display {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            background: radial-gradient(circle at 35% 30%, #3a2f6d, #14102b 70%);
+            border: 3px solid var(--gold-dim);
+            box-shadow:
+                0 0 0 6px rgba(0,0,0,0.3),
+                0 15px 35px -8px rgba(0,0,0,0.6);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .ball-display.pulse {
+            transform: scale(1.06);
+        }
+
+        .ball-display .letter {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+
+        .ball-display .number {
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .ball-display.color-b { border-color: var(--b-color); box-shadow: 0 0 25px -2px var(--b-color), 0 15px 35px -8px rgba(0,0,0,0.6); }
+        .ball-display.color-i { border-color: var(--i-color); box-shadow: 0 0 25px -2px var(--i-color), 0 15px 35px -8px rgba(0,0,0,0.6); }
+        .ball-display.color-n { border-color: var(--n-color); box-shadow: 0 0 25px -2px var(--n-color), 0 15px 35px -8px rgba(0,0,0,0.6); }
+        .ball-display.color-g { border-color: var(--g-color); box-shadow: 0 0 25px -2px var(--g-color), 0 15px 35px -8px rgba(0,0,0,0.6); }
+        .ball-display.color-o { border-color: var(--o-color); box-shadow: 0 0 25px -2px var(--o-color), 0 15px 35px -8px rgba(0,0,0,0.6); }
+
+        .btn {
+            background: linear-gradient(145deg, #6d28d9, #4c1d95);
+            color: #fff;
+            border: 1px solid rgba(167, 139, 250, 0.4);
+            padding: 16px 24px;
+            font-size: 0.8rem;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 12px;
+            font-family: 'Press Start 2P', cursive;
+            letter-spacing: 0.5px;
+            transition: all 0.18s ease;
+            box-shadow: 0 8px 20px -6px rgba(109, 40, 217, 0.55);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px -6px rgba(109, 40, 217, 0.7);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #33304a;
+            border-color: transparent;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.6;
+            transform: none;
+        }
+
+        .btn-gold {
+            background: linear-gradient(145deg, var(--gold), #b45309);
+            color: #1a1040;
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 0 8px 20px -6px rgba(251, 191, 36, 0.5);
+        }
+
+        .btn-gold:hover {
+            box-shadow: 0 12px 26px -6px rgba(251, 191, 36, 0.65);
+        }
+
+        .btn-danger {
+            background: linear-gradient(145deg, #ef4444, #7f1d1d);
+            border-color: rgba(248, 113, 113, 0.4);
+            box-shadow: 0 8px 20px -6px rgba(239, 68, 68, 0.45);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 12px 26px -6px rgba(239, 68, 68, 0.6);
+        }
+
+        .drawn-balls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .drawn-balls::-webkit-scrollbar {
+            width: 6px;
+        }
+        .drawn-balls::-webkit-scrollbar-thumb {
+            background: var(--purple);
+            border-radius: 6px;
+        }
+
+        .mini-ball {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #211a45;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid rgba(255,255,255,0.12);
+            flex-shrink: 0;
+            animation: pop 0.25s ease;
+        }
+
+        .mini-ball.color-b { border-color: var(--b-color); color: var(--b-color); }
+        .mini-ball.color-i { border-color: var(--i-color); color: var(--i-color); }
+        .mini-ball.color-n { border-color: var(--n-color); color: var(--n-color); }
+        .mini-ball.color-g { border-color: var(--g-color); color: var(--g-color); }
+        .mini-ball.color-o { border-color: var(--o-color); color: var(--o-color); }
+
+        .empty-history {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0.4); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+            .admin-container { padding: 22px; }
+            h1 { font-size: 0.95rem; }
+            .ball-display { width: 110px; height: 110px; }
+            .ball-display .number { font-size: 2.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="top-row">
+            <div class="badge-icon">🎱</div>
+            <h1>PANEL DE ADMIN</h1>
+        </div>
+
+        <div class="status">
+            <span>Partida <strong>#{{ partida_id }}</strong></span>
+            <span class="count-wrap">Balotas: <span id="count">0</span>/75</span>
+        </div>
+
+        <div class="info-box">
+            <h3>Última Balota</h3>
+            <div class="ball-display-wrap">
+                <div id="current-ball" class="ball-display">
+                    <span class="number">--</span>
+                </div>
+            </div>
+        </div>
+
+        <button id="btn-draw" class="btn">SORTEAR BALOTA</button>
+        <button id="btn-auto" class="btn btn-gold">INICIAR AUTO-PLAY (10s)</button>
+        <button id="btn-reset" class="btn btn-danger">REINICIAR JUEGO</button>
+
+        <div class="info-box">
+            <h3>Historial</h3>
+            <div id="history" class="drawn-balls">
+                <span class="empty-history">Aún no se han sorteado balotas.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PARTIDA_ID = Number("{{ partida_id }}");
+        let drawnBalls = [];
+        let autoPlayInterval = null;
+
+        document.getElementById('btn-draw').onclick = drawBall;
+
+        document.getElementById('btn-auto').onclick = () => {
+            const btn = document.getElementById('btn-auto');
+            if (autoPlayInterval) {
+                // Stop Auto-PlaySSS
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+                btn.textContent = "INICIAR AUTO-PLAY (10s)";
+                btn.classList.add('btn-gold');
+                btn.classList.remove('btn-danger');
+                document.getElementById('btn-draw').disabled = false;
+            } else {
+                // Start Auto-Play
+                drawBall(); // Draw immediately
+                autoPlayInterval = setInterval(drawBall, 10000); // Then every 10s
+                btn.textContent = "DETENER AUTO-PLAY";
+                btn.classList.remove('btn-gold');
+                btn.classList.add('btn-danger');
+                document.getElementById('btn-draw').disabled = true;
+            }
+        };
+
+        async function drawBall() {
+            const response = await fetch('/panel/sortear-balota/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ partida_id: PARTIDA_ID })
+            });
+
+            const data = await response.json();
+            if (data.number) {
+                addBall(data.number);
+            } else if (data.error) {
+                alert(data.error);
+                if (autoPlayInterval) document.getElementById('btn-auto').click(); // Stop if error
+            }
+        }
+
+        document.getElementById('btn-reset').onclick = async () => {
+            if (!confirm('¿Seguro que quieres reiniciar el juego?')) return;
+
+            if (autoPlayInterval) document.getElementById('btn-auto').click(); // Stop auto-play
+
+            const response = await fetch('/panel/reiniciar-juego/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+            console.log('Reset response:', data);
+
+            if (data.success) {
+                alert('Juego reiniciado. Los jugadores conectados deberían recargarse automáticamente.');
+                drawnBalls = [];
+                const currentBallEl = document.getElementById('current-ball');
+                currentBallEl.innerHTML = '<span class="number">--</span>';
+                currentBallEl.className = 'ball-display';
+                document.getElementById('history').innerHTML = '<span class="empty-history">Aún no se han sorteado balotas.</span>';
+                document.getElementById('count').textContent = '0';
+            } else {
+                alert('Error: ' + (data.error || 'Desconocido'));
+            }
+        };
+
+        // Letra de BINGO según el rango del número (B:1-15, I:16-30, N:31-45, G:46-60, O:61-75)
+        function bingoLetter(number) {
+            if (number <= 15) return { letter: 'B', cls: 'color-b' };
+            if (number <= 30) return { letter: 'I', cls: 'color-i' };
+            if (number <= 45) return { letter: 'N', cls: 'color-n' };
+            if (number <= 60) return { letter: 'G', cls: 'color-g' };
+            return { letter: 'O', cls: 'color-o' };
+        }
+
+        function addBall(number) {
+            drawnBalls.push(number);
+            const { letter, cls } = bingoLetter(number);
+
+            const currentBallEl = document.getElementById('current-ball');
+            currentBallEl.className = 'ball-display pulse ' + cls;
+            currentBallEl.innerHTML = `<span class="letter">${letter}</span><span class="number">${number}</span>`;
+            setTimeout(() => currentBallEl.classList.remove('pulse'), 250);
+
+            document.getElementById('count').textContent = drawnBalls.length;
+
+            const historyEl = document.getElementById('history');
+            const emptyMsg = historyEl.querySelector('.empty-history');
+            if (emptyMsg) emptyMsg.remove();
+
+            const mini = document.createElement('div');
+            mini.classList.add('mini-ball', cls);
+            mini.textContent = letter + number;
+            historyEl.prepend(mini);
+
+            if (drawnBalls.length >= 75) {
+                document.getElementById('btn-draw').disabled = true;
+            }
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
