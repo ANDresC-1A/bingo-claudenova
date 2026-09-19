@@ -11,29 +11,63 @@
   partidas de Bingo, jugadores, salas y comunicación en tiempo real mediante WebSockets.
 </p>
 
+<p align="center">
+
+  <a href="https://github.com/ANDresC-1A/bingo-claudenova">
+    <img src="https://img.shields.io/badge/GitHub-Repositorio-181717?style=for-the-badge&logo=github" alt="GitHub">
+  </a>
+
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+
+  <img src="https://img.shields.io/badge/Django-Framework-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django">
+
+  <img src="https://img.shields.io/badge/WebSockets-Tiempo%20Real-010101?style=for-the-badge" alt="WebSockets">
+
+</p>
+
 ---
 
-## 📌 Descripción
+# 🔗 Repositorio
 
-**Bingo ClaudeNova** es una aplicación web de Bingo multijugador diseñada para permitir que varios jugadores participen en una misma partida mientras reciben las actualizaciones del juego en tiempo real.
+El código fuente completo del proyecto se encuentra disponible en GitHub:
 
-El sistema permite gestionar jugadores, salas de espera, cartones de Bingo, sorteo de balotas, validación de BINGO y comunicación entre los participantes.
+<p align="center">
 
-La aplicación utiliza **Django Channels y WebSockets** para mantener una comunicación en tiempo real entre el servidor y los jugadores conectados.
+<a href="https://github.com/ANDresC-1A/bingo-claudenova">
+https://github.com/ANDresC-1A/bingo-claudenova
+</a>
 
-### ✨ Características principales
+</p>
 
-- 🔐 Registro e inicio de sesión de usuarios.
-- ⏳ Sala de espera para los jugadores.
+---
+
+# 📌 Descripción
+
+**Bingo ClaudeNova** es una aplicación web de Bingo multijugador desarrollada con **Python, Django y Django Channels**.
+
+El proyecto permite que varios jugadores participen en una misma partida de Bingo mientras reciben las actualizaciones del juego en tiempo real.
+
+La aplicación incorpora un sistema de usuarios, salas de espera, generación de cartones, sorteo de balotas, chat, validación de BINGO y un panel administrativo para controlar las partidas.
+
+La comunicación en tiempo real se realiza mediante **WebSockets**, permitiendo que los eventos del juego se actualicen automáticamente en los navegadores de los jugadores conectados.
+
+---
+
+# ✨ Características principales
+
+- 🔐 Sistema de registro e inicio de sesión.
+- 👥 Soporte para múltiples jugadores.
+- ⏳ Sala de espera.
 - 🎱 Cartones de Bingo de 75 bolas.
-- 🎲 Sorteo de balotas en tiempo real.
+- 🎲 Sorteo de balotas.
+- ⚡ Actualizaciones en tiempo real.
 - 💬 Chat entre jugadores.
 - 🏆 Validación de BINGO.
 - 🔄 Reinicio de partidas.
 - 👑 Panel de administración.
-- ⚡ Comunicación en tiempo real mediante WebSockets.
-- 👥 Soporte para múltiples jugadores.
-- 🎯 Validación de líneas horizontales, verticales y diagonales.
+- 📡 Comunicación mediante WebSockets.
+- 🧩 Arquitectura basada en Django.
+- 🗄️ Persistencia de información mediante base de datos.
 
 ---
 
@@ -45,9 +79,9 @@ La aplicación utiliza **Django Channels y WebSockets** para mantener una comuni
   <img src="ini.jpeg" alt="Inicio de sesión de Bingo ClaudeNova" width="850">
 </p>
 
-La aplicación cuenta con un sistema de autenticación que permite a los usuarios iniciar sesión para acceder a las funcionalidades del juego.
+La aplicación cuenta con un sistema de autenticación que permite a los usuarios ingresar mediante sus credenciales.
 
-Los usuarios deben ingresar sus credenciales para poder participar en una partida.
+Desde esta pantalla el usuario puede acceder a la plataforma y posteriormente ingresar a una sala de juego.
 
 ---
 
@@ -57,9 +91,9 @@ Los usuarios deben ingresar sus credenciales para poder participar en una partid
   <img src="sala.jpeg" alt="Sala de espera de Bingo ClaudeNova" width="850">
 </p>
 
-La sala de espera permite a los jugadores permanecer conectados mientras se prepara la partida.
+La sala de espera permite que los jugadores permanezcan conectados mientras se prepara la partida.
 
-Desde esta sección los jugadores pueden esperar el inicio del juego y visualizar la información correspondiente a la sala.
+Desde esta sección se gestiona el ingreso de los jugadores antes de comenzar el juego.
 
 ---
 
@@ -69,9 +103,9 @@ Desde esta sección los jugadores pueden esperar el inicio del juego y visualiza
   <img src="juego.jpeg" alt="Partida de Bingo ClaudeNova" width="850">
 </p>
 
-Durante la partida, cada jugador dispone de un cartón de Bingo generado automáticamente.
+Durante la partida, cada jugador dispone de un cartón de Bingo generado para el juego.
 
-El juego utiliza el formato tradicional de **Bingo de 75 bolas**, organizado en cinco columnas:
+El sistema utiliza el formato tradicional de **Bingo de 75 bolas**, organizado en cinco columnas:
 
 ```text
 B → 1 - 15
@@ -81,7 +115,7 @@ G → 46 - 60
 O → 61 - 75
 ```
 
-Cada cartón tiene una estructura de:
+Cada cartón está compuesto por una matriz de:
 
 ```text
 5 × 5
@@ -99,33 +133,39 @@ Los jugadores pueden marcar las balotas que hayan sido sorteadas y utilizar la o
   <img src="admin.jpeg" alt="Panel de administración de Bingo ClaudeNova" width="850">
 </p>
 
-El sistema cuenta con un panel administrativo desde el cual se puede controlar el funcionamiento de la partida.
+El sistema cuenta con un panel administrativo desde el cual se puede controlar el desarrollo de las partidas.
 
 Entre las acciones disponibles se encuentran:
 
 - 🎱 Sortear una nueva balota.
 - 🔄 Reiniciar la partida.
-- 👀 Controlar el estado del juego.
-- 👥 Gestionar el desarrollo de la partida.
+- 👀 Controlar el estado de la partida.
+- 👥 Gestionar el desarrollo del juego.
 
-Cuando el administrador realiza una acción, los jugadores conectados reciben la actualización mediante WebSockets.
+Cuando el administrador realiza una acción, los jugadores conectados reciben la actualización correspondiente mediante WebSockets.
 
 ---
 
 # ⚡ Comunicación en tiempo real
 
-Uno de los componentes principales del proyecto es la comunicación en tiempo real.
+Uno de los componentes principales de **Bingo ClaudeNova** es la comunicación en tiempo real.
 
-Para esto se utiliza:
+Para implementar esta funcionalidad se utilizan:
 
 - **Django Channels**
 - **WebSockets**
 - **Daphne**
 - **ASGI**
 
-Los eventos permiten actualizar la información del juego sin que los jugadores tengan que recargar manualmente la página.
+Esto permite que las acciones realizadas en una partida sean comunicadas automáticamente a los jugadores conectados sin necesidad de actualizar manualmente la página.
 
-### Eventos principales
+---
+
+# 📡 Eventos WebSocket
+
+El proyecto utiliza diferentes eventos para comunicar información entre el servidor y los clientes.
+
+Algunos de los eventos utilizados son:
 
 ```text
 new_ball
@@ -135,51 +175,280 @@ game_over
 game_reset
 ```
 
-### Flujo de comunicación
+### 🎲 `new_ball`
+
+Se utiliza cuando el administrador realiza el sorteo de una nueva balota.
+
+---
+
+### 💬 `chat_message`
+
+Permite enviar mensajes entre los jugadores conectados a la partida.
+
+---
+
+### 🏆 `bingo_claim`
+
+Se utiliza cuando un jugador reclama que ha conseguido BINGO.
+
+El servidor procesa la solicitud y realiza la validación correspondiente.
+
+---
+
+### 🏁 `game_over`
+
+Indica que la partida ha finalizado.
+
+---
+
+### 🔄 `game_reset`
+
+Permite notificar a los jugadores que la partida ha sido reiniciada.
+
+---
+
+# 🏗️ Arquitectura del sistema
+
+El funcionamiento general de la aplicación puede representarse de la siguiente manera:
 
 ```text
-              ┌─────────────────────┐
-              │      JUGADORES      │
-              │                     │
-              │  🎱 Bingo           │
-              │  💬 Chat            │
-              │  🏆 BINGO           │
-              └──────────┬──────────┘
-                         │
-                     WebSocket
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │   DJANGO CHANNELS   │
-              │                     │
-              │     Consumers       │
-              └──────────┬──────────┘
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │       DJANGO        │
-              │                     │
-              │ Models / Services   │
-              │ Views / Logic       │
-              └──────────┬──────────┘
-                         │
-                         ▲
-                         │
-                     WebSocket
-                         │
-              ┌──────────┴──────────┐
-              │     ADMINISTRADOR   │
-              │                     │
-              │ 🎱 Sortear balota   │
-              │ 🔄 Reiniciar juego  │
-              └─────────────────────┘
+                         ┌─────────────────────┐
+                         │       USUARIO       │
+                         │                     │
+                         │  Registro / Login   │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │    SALA DE ESPERA   │
+                         │                     │
+                         │ Jugadores conectados│
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   PARTIDA DE BINGO  │
+                         │                     │
+                         │ 🎱 Cartón           │
+                         │ 🎲 Balotas          │
+                         │ 💬 Chat             │
+                         │ 🏆 BINGO            │
+                         └──────────┬──────────┘
+                                    │
+                              WebSocket
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   DJANGO CHANNELS   │
+                         │                     │
+                         │      Consumers      │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │       DJANGO        │
+                         │                     │
+                         │ Models              │
+                         │ Views               │
+                         │ Services            │
+                         │ Routing             │
+                         └──────────┬──────────┘
+                                    ▲
+                                    │
+                              WebSocket
+                                    │
+                         ┌──────────┴──────────┐
+                         │   ADMINISTRADOR     │
+                         │                     │
+                         │ 🎱 Sortear balota   │
+                         │ 🔄 Reiniciar juego  │
+                         │ 👀 Controlar juego  │
+                         └─────────────────────┘
 ```
 
 ---
 
-# 🏗️ Arquitectura del proyecto
+# 🎯 Funcionamiento general
 
-La estructura principal del proyecto es la siguiente:
+El funcionamiento de una partida se puede dividir en varias etapas:
+
+```text
+1. Registro / Inicio de sesión
+              │
+              ▼
+2. Ingreso a la sala de espera
+              │
+              ▼
+3. Inicio de la partida
+              │
+              ▼
+4. Generación del cartón
+              │
+              ▼
+5. Sorteo de balotas
+              │
+              ▼
+6. Actualización mediante WebSocket
+              │
+              ▼
+7. Jugadores marcan sus cartones
+              │
+              ▼
+8. Jugador reclama BINGO
+              │
+              ▼
+9. Servidor valida el patrón
+              │
+        ┌─────┴─────┐
+        │           │
+        ▼           ▼
+      Válido      Inválido
+        │           │
+        ▼           ▼
+   🏆 BINGO       Continúa
+        │
+        ▼
+10. Finalización de partida
+        │
+        ▼
+11. Reinicio
+```
+
+---
+
+# 🎱 Lógica del Bingo
+
+El proyecto implementa un sistema de **Bingo de 75 bolas**.
+
+Las bolas están distribuidas de acuerdo con las columnas tradicionales:
+
+| Columna | Rango |
+|---|---:|
+| **B** | 1 - 15 |
+| **I** | 16 - 30 |
+| **N** | 31 - 45 |
+| **G** | 46 - 60 |
+| **O** | 61 - 75 |
+
+---
+
+## 🎟️ Cartón
+
+Cada jugador recibe un cartón de:
+
+```text
+5 × 5
+```
+
+Ejemplo conceptual:
+
+```text
+ B    I    N    G    O
+────────────────────────
+ 7   18   34   51   68
+12   25   42   57   72
+ 3   21  FREE  49   65
+14   29   37   54   70
+ 8   16   45   60   63
+```
+
+La posición central es una casilla gratuita:
+
+```text
+FREE
+```
+
+---
+
+# 🏆 Validación de BINGO
+
+El sistema contempla diferentes patrones para determinar un BINGO:
+
+### ➡️ Línea horizontal
+
+```text
+X X X X X
+```
+
+---
+
+### ⬇️ Línea vertical
+
+```text
+X
+X
+X
+X
+X
+```
+
+---
+
+### ↘️ Diagonal principal
+
+```text
+X . . . .
+. X . . .
+. . X . .
+. . . X .
+. . . . X
+```
+
+---
+
+### ↙️ Diagonal secundaria
+
+```text
+. . . . X
+. . . X .
+. . X . .
+. X . . .
+X . . . .
+```
+
+El servidor se encarga de comprobar las condiciones correspondientes cuando un jugador realiza una reclamación de BINGO.
+
+---
+
+# 👥 Usuarios de prueba
+
+El proyecto incluye un script para crear usuarios y datos de prueba:
+
+```powershell
+python setup_usuarios_prueba.py
+```
+
+Los usuarios de prueba incluidos son:
+
+| Usuario | Contraseña |
+|---|---|
+| `alice` | `alice123` |
+| `bob` | `bob123` |
+| `charlie` | `charlie123` |
+
+> ⚠️ Estas credenciales están destinadas únicamente al entorno de prueba local y no deben utilizarse como credenciales reales en producción.
+
+---
+
+# 🧩 Tecnologías utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| 🐍 **Python** | Lenguaje principal |
+| 🌐 **Django** | Framework web |
+| ⚡ **Django Channels** | Comunicación en tiempo real |
+| 🔌 **Daphne** | Servidor ASGI |
+| 🗄️ **SQLite** | Base de datos utilizada |
+| 🎨 **HTML5** | Estructura de las interfaces |
+| 🎨 **CSS3** | Diseño visual |
+| 📜 **JavaScript** | Interactividad |
+| 📡 **WebSockets** | Comunicación bidireccional en tiempo real |
+| 🔧 **Git** | Control de versiones |
+| 🐙 **GitHub** | Repositorio del proyecto |
+
+---
+
+# 📁 Estructura del proyecto
 
 ```text
 bingoclaudenova/
@@ -234,122 +503,109 @@ bingoclaudenova/
 
 ---
 
-# 🧩 Tecnologías utilizadas
+# 📂 Componentes principales
 
-| Tecnología | Uso |
-|---|---|
-| 🐍 **Python** | Lenguaje principal del proyecto |
-| 🌐 **Django** | Framework principal para el desarrollo web |
-| ⚡ **Django Channels** | Comunicación en tiempo real |
-| 🔌 **Daphne** | Servidor ASGI |
-| 🗄️ **SQLite** | Base de datos utilizada durante el desarrollo |
-| 🎨 **HTML5** | Estructura de las interfaces |
-| 🎨 **CSS3** | Diseño y estilos |
-| 📜 **JavaScript** | Interactividad y comunicación WebSocket |
-| 🔌 **WebSockets** | Comunicación bidireccional en tiempo real |
+## `models.py`
 
----
+Contiene los modelos principales utilizados para representar la información del sistema.
 
-# 🎯 Funcionamiento general
-
-El funcionamiento de la aplicación se puede resumir en las siguientes etapas:
+Entre ellos:
 
 ```text
-┌─────────────────────────┐
-│   1. REGISTRO / LOGIN   │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│    2. SALA DE ESPERA    │
-└────────────┬────────────┘
-             │
-             ▼
-┌─────────────────────────┐
-│     3. PARTIDA BINGO    │
-│                         │
-│ 🎱 Cartón               │
-│ 🎲 Balotas              │
-│ 💬 Chat                 │
-│ 🏆 BINGO                │
-└────────────┬────────────┘
-             │
-             │ WebSocket
-             ▼
-┌─────────────────────────┐
-│   4. SERVIDOR DJANGO    │
-│                         │
-│ Django Channels         │
-│ Consumers               │
-│ Services                │
-└────────────┬────────────┘
-             ▲
-             │
-             │ WebSocket
-             │
-┌────────────┴────────────┐
-│   5. ADMINISTRADOR      │
-│                         │
-│ 🎱 Sortear balota       │
-│ 🔄 Reiniciar partida    │
-│ 👀 Controlar juego      │
-└─────────────────────────┘
+Sala
+Partida
+Carton
 ```
 
 ---
 
-# 🎱 Lógica del Bingo
+## `views.py`
 
-El proyecto implementa un sistema de **Bingo de 75 bolas**.
+Gestiona las diferentes vistas y operaciones HTTP de la aplicación.
 
-Las bolas están distribuidas de la siguiente manera:
+Entre sus responsabilidades:
 
-| Columna | Rango |
-|---|---:|
-| **B** | 1 - 15 |
-| **I** | 16 - 30 |
-| **N** | 31 - 45 |
-| **G** | 46 - 60 |
-| **O** | 61 - 75 |
+- Registro.
+- Inicio de sesión.
+- Sala de espera.
+- Partida.
+- Panel administrativo.
+- Sorteo de balotas.
+- Reinicio de partidas.
 
-Cada cartón tiene una matriz de:
+---
+
+## `consumers.py`
+
+Gestiona las conexiones WebSocket utilizando Django Channels.
+
+Se encarga de procesar los eventos enviados entre los clientes y el servidor.
+
+---
+
+## `services.py`
+
+Contiene la lógica relacionada con el funcionamiento del Bingo.
+
+Entre sus responsabilidades:
+
+- Generación de cartones.
+- Sorteo de balotas.
+- Validación de BINGO.
+- Gestión de partidas.
+- Lógica del juego.
+
+---
+
+## `routing.py`
+
+Define las rutas utilizadas para las conexiones WebSocket.
+
+Actualmente se utilizan:
 
 ```text
-5 × 5
+/ws/sala/
+/ws/juego/
 ```
-
-La casilla central de la columna **N** corresponde a una casilla gratuita.
-
-### 🏆 Patrones de BINGO
-
-La validación contempla diferentes patrones ganadores:
-
-- ➡️ Líneas horizontales.
-- ⬇️ Líneas verticales.
-- ↘️ Diagonal principal.
-- ↙️ Diagonal secundaria.
-
-Cuando un jugador reclama **BINGO**, el servidor verifica las condiciones correspondientes antes de determinar el resultado.
 
 ---
 
-# 👥 Usuarios de prueba
+## `urls.py`
 
-El proyecto incluye un script para crear usuarios y datos de prueba:
+Define las rutas HTTP de la aplicación Django.
 
-```bash
-python setup_usuarios_prueba.py
+---
+
+## `asgi.py`
+
+Configura la aplicación **ASGI**, necesaria para trabajar con Django Channels y WebSockets.
+
+---
+
+# 🔌 Rutas WebSocket
+
+El proyecto utiliza las siguientes rutas principales:
+
+```text
+/ws/sala/
+/ws/juego/
 ```
 
-Los usuarios de prueba incluidos son:
+### Sala
 
-| Usuario | Contraseña |
-|---|---|
-| `alice` | `alice123` |
-| `bob` | `bob123` |
-| `charlie` | `charlie123` |
+```text
+/ws/sala/
+```
 
-> ⚠️ Estas credenciales están destinadas únicamente al entorno de prueba local. No deben utilizarse como credenciales reales en producción.
+Gestiona la comunicación relacionada con la sala de espera.
+
+### Juego
+
+```text
+/ws/juego/
+```
+
+Gestiona la comunicación relacionada con la partida.
 
 ---
 
@@ -358,13 +614,13 @@ Los usuarios de prueba incluidos son:
 ## 1. Clonar el repositorio
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/ANDresC-1A/bingo-claudenova.git
 ```
 
 Entrar al proyecto:
 
 ```bash
-cd bingoclaudenova
+cd bingo-claudenova
 ```
 
 ---
@@ -377,19 +633,23 @@ En Windows:
 py -3.14 -m venv venv
 ```
 
-Activar el entorno virtual:
+---
+
+## 3. Activar el entorno virtual
+
+En PowerShell:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-Si PowerShell bloquea la ejecución del script, se puede utilizar:
+Si aparece un error relacionado con la política de ejecución de PowerShell, se puede ejecutar:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-Después volver a activar:
+Después:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
@@ -397,7 +657,7 @@ Después volver a activar:
 
 ---
 
-## 3. Instalar las dependencias
+## 4. Instalar las dependencias
 
 Con el entorno virtual activado:
 
@@ -407,7 +667,7 @@ pip install -r requirements.txt
 
 ---
 
-## 4. Ejecutar las migraciones
+## 5. Ejecutar las migraciones
 
 ```powershell
 python manage.py migrate
@@ -415,7 +675,7 @@ python manage.py migrate
 
 ---
 
-## 5. Crear usuarios de prueba
+## 6. Crear usuarios de prueba
 
 ```powershell
 python setup_usuarios_prueba.py
@@ -423,7 +683,7 @@ python setup_usuarios_prueba.py
 
 ---
 
-## 6. Ejecutar el servidor
+## 7. Ejecutar el servidor
 
 ```powershell
 python manage.py runserver
@@ -437,7 +697,7 @@ http://127.0.0.1:8000/
 
 ---
 
-# 👑 Panel de administración
+# 👑 Panel administrativo
 
 Para crear un usuario administrador de Django:
 
@@ -445,129 +705,25 @@ Para crear un usuario administrador de Django:
 python manage.py createsuperuser
 ```
 
-Después de crear el usuario, se puede acceder al panel administrativo mediante:
+Después de crear el usuario, se puede acceder al panel administrativo de Django:
 
 ```text
 http://127.0.0.1:8000/admin/
 ```
 
-El panel administrativo del juego se encuentra disponible en:
+El panel administrativo del proyecto se encuentra en:
 
 ```text
 http://127.0.0.1:8000/panel/
 ```
 
-El usuario debe contar con los permisos correspondientes para acceder al panel.
-
----
-
-# 🔌 Rutas WebSocket
-
-El proyecto utiliza diferentes conexiones WebSocket para mantener actualizada la información entre el servidor y los clientes.
-
-Actualmente se utilizan las siguientes rutas:
-
-```text
-/ws/sala/
-/ws/juego/
-```
-
-### Sala
-
-```text
-/ws/sala/
-```
-
-Permite gestionar la comunicación relacionada con la sala de espera.
-
-### Juego
-
-```text
-/ws/juego/
-```
-
-Permite gestionar eventos relacionados con la partida de Bingo.
-
----
-
-# 📁 Componentes principales
-
-## `models.py`
-
-Contiene los modelos utilizados para representar la información principal de la aplicación.
-
-Entre ellos se encuentran:
-
-- `Sala`
-- `Partida`
-- `Carton`
-
----
-
-## `views.py`
-
-Gestiona las diferentes vistas y operaciones HTTP de la aplicación.
-
-Entre sus funciones se encuentran:
-
-- Registro de usuarios.
-- Inicio de sesión.
-- Sala de espera.
-- Partida.
-- Panel administrativo.
-- Sorteo de balotas.
-- Reinicio de partidas.
-
----
-
-## `consumers.py`
-
-Gestiona las conexiones **WebSocket** mediante Django Channels.
-
-Se encarga de procesar eventos enviados entre los jugadores y el servidor.
-
-Algunos de los eventos utilizados son:
-
-```text
-new_ball
-chat_message
-bingo_claim
-game_over
-game_reset
-```
-
----
-
-## `services.py`
-
-Contiene la lógica de negocio relacionada con el funcionamiento del Bingo.
-
-Entre sus responsabilidades se encuentran:
-
-- Generación de cartones.
-- Sorteo de balotas.
-- Validación de BINGO.
-- Gestión de partidas.
-- Lógica relacionada con el juego.
-
----
-
-## `routing.py`
-
-Define las rutas utilizadas por las conexiones WebSocket.
-
-Ejemplo:
-
-```text
-/ws/sala/
-/ws/juego/
-```
+El usuario debe contar con los permisos necesarios para acceder al panel.
 
 ---
 
 # 🛠️ Comandos útiles
 
-### Comprobar la configuración de Django
+### Comprobar configuración
 
 ```powershell
 python manage.py check
@@ -597,7 +753,7 @@ python manage.py createsuperuser
 python manage.py collectstatic --noinput
 ```
 
-### Ejecutar servidor de desarrollo
+### Ejecutar servidor
 
 ```powershell
 python manage.py runserver
@@ -608,6 +764,45 @@ python manage.py runserver
 ```text
 CTRL + C
 ```
+
+---
+
+# 🌐 Despliegue
+
+El proyecto incluye archivos relacionados con el despliegue:
+
+```text
+.deployment
+startup.sh
+```
+
+El archivo:
+
+```text
+startup.sh
+```
+
+contiene las instrucciones necesarias para iniciar la aplicación en un entorno compatible.
+
+Debido al uso de **Django Channels y WebSockets**, el proyecto requiere un servidor compatible con **ASGI**.
+
+En producción se puede utilizar un servidor como **Daphne**.
+
+---
+
+# 🔒 Consideraciones de seguridad
+
+Para utilizar el proyecto en un entorno de producción se recomienda:
+
+- 🔑 Utilizar una `SECRET_KEY` segura.
+- 🚫 No publicar contraseñas reales.
+- 🔐 Configurar `DEBUG=False`.
+- 🌐 Configurar correctamente `ALLOWED_HOSTS`.
+- 🔒 Utilizar HTTPS.
+- 🔑 Utilizar variables de entorno para información sensible.
+- 🗄️ Utilizar una base de datos adecuada para producción.
+- 🛡️ Configurar correctamente los permisos de usuarios.
+- 🚫 No utilizar las credenciales de prueba en producción.
 
 ---
 
@@ -624,140 +819,80 @@ bingoclaudenova/
 └── admin.jpeg
 ```
 
-| Imagen | Descripción |
+| Archivo | Descripción |
 |---|---|
-| `ini.jpeg` | Pantalla de inicio de sesión |
-| `sala.jpeg` | Sala de espera |
-| `juego.jpeg` | Partida de Bingo |
-| `admin.jpeg` | Panel de administración |
+| `ini.jpeg` | 🔐 Pantalla de inicio de sesión |
+| `sala.jpeg` | ⏳ Sala de espera |
+| `juego.jpeg` | 🎱 Partida de Bingo |
+| `admin.jpeg` | 👑 Panel administrativo |
 
 ---
 
-# 🔄 Flujo de una partida
+# 🎓 Objetivo del proyecto
 
-El funcionamiento general de una partida es:
+**Bingo ClaudeNova** fue desarrollado como un proyecto académico y práctico con el objetivo de aplicar diferentes conceptos relacionados con el desarrollo de aplicaciones web.
+
+Entre los principales objetivos se encuentran:
+
+- Desarrollar una aplicación web utilizando Django.
+- Implementar autenticación de usuarios.
+- Crear una aplicación multijugador.
+- Implementar comunicación en tiempo real.
+- Utilizar WebSockets.
+- Trabajar con Django Channels.
+- Gestionar información mediante una base de datos.
+- Implementar lógica de un juego de Bingo.
+- Desarrollar interfaces web.
+- Aplicar una arquitectura cliente-servidor.
+- Utilizar Git y GitHub para el control de versiones.
+
+---
+
+# 📚 Conceptos aplicados
+
+Durante el desarrollo del proyecto se aplicaron conceptos relacionados con:
 
 ```text
-        👤 Jugador
-             │
-             ▼
-       🔐 Iniciar sesión
-             │
-             ▼
-       ⏳ Sala de espera
-             │
-             ▼
-       🎱 Inicia partida
-             │
-             ▼
-     🎲 Se sortea una bola
-             │
-             ▼
-    ⚡ WebSocket actualiza
-        a los jugadores
-             │
-             ▼
-      👤 Jugadores marcan
-        sus cartones
-             │
-             ▼
-       🏆 Jugador reclama
-            BINGO
-             │
-             ▼
-      🔎 Servidor valida
-             │
-        ┌────┴────┐
-        │         │
-        ▼         ▼
-      ❌ No      ✅ Sí
-     válido     válido
-        │         │
-        │         ▼
-        │      🏆 GANADOR
-        │         │
-        └────┬────┘
-             ▼
-       🔄 Reiniciar
-        nueva partida
+Python
+   │
+   ├── Django
+   │
+   ├── Django Channels
+   │
+   ├── WebSockets
+   │
+   ├── ASGI
+   │
+   ├── Bases de datos
+   │
+   ├── Autenticación
+   │
+   ├── Programación orientada a objetos
+   │
+   └── Desarrollo web
 ```
-
----
-
-# 🌐 Despliegue
-
-El proyecto incluye archivos destinados a facilitar el despliegue de la aplicación:
-
-```text
-.deployment
-startup.sh
-```
-
-El archivo `startup.sh` permite definir las instrucciones necesarias para iniciar la aplicación en un entorno de despliegue compatible.
-
-Para un entorno de producción se recomienda utilizar un servidor **ASGI** compatible con Django Channels, como **Daphne**.
-
----
-
-# 🔒 Consideraciones de seguridad
-
-Para utilizar el proyecto en producción se recomienda:
-
-- 🔑 Utilizar una `SECRET_KEY` segura.
-- 🚫 No publicar credenciales reales.
-- 🔐 Configurar correctamente `DEBUG=False`.
-- 🌐 Configurar `ALLOWED_HOSTS`.
-- 🔒 Utilizar HTTPS.
-- 🔑 Utilizar variables de entorno para información sensible.
-- 🗄️ Utilizar una base de datos apropiada para producción.
-- 🛡️ Configurar correctamente los permisos de usuarios.
-
-Las credenciales incluidas en este README son únicamente para pruebas locales.
-
----
-
-# 📚 Objetivo del proyecto
-
-**Bingo ClaudeNova** fue desarrollado como un proyecto académico y práctico con el objetivo de aplicar conceptos relacionados con:
-
-- Desarrollo web.
-- Framework Django.
-- Programación en Python.
-- Arquitectura cliente-servidor.
-- Comunicación mediante WebSockets.
-- Desarrollo de aplicaciones en tiempo real.
-- Manejo de bases de datos.
-- Autenticación de usuarios.
-- Diseño de interfaces web.
-- Desarrollo de aplicaciones multijugador.
 
 ---
 
 # 🚀 Posibles mejoras futuras
 
-Entre las funcionalidades que pueden incorporarse posteriormente se encuentran:
+El proyecto puede continuar evolucionando mediante la incorporación de nuevas funcionalidades.
 
-- 👥 Sistema avanzado de salas.
+Algunas posibles mejoras son:
+
+- 👥 Sistema avanzado de creación de salas.
 - 🏆 Historial de ganadores.
 - 📊 Estadísticas de jugadores.
 - 🏅 Sistema de ranking.
 - 🎨 Personalización de cartones.
 - 🔊 Efectos de sonido.
-- 📱 Mejor adaptación a dispositivos móviles.
-- 🌐 Base de datos para producción.
-- 🔐 Sistema de recuperación de contraseña.
+- 📱 Diseño responsive mejorado.
 - 👤 Perfil de usuario.
+- 🔐 Recuperación de contraseña.
 - 📈 Panel de estadísticas administrativas.
-
----
-
-# 👨‍💻 Autores
-
-<p align="center">
-  <strong>Andres Contreras</strong>
-  <br>
-  <strong>Wilmer Flores</strong>
-</p>
+- 🌐 Utilización de una base de datos para producción.
+- 🔔 Sistema de notificaciones.
+- 🎮 Diferentes modalidades de Bingo.
 
 ---
 
@@ -765,12 +900,46 @@ Entre las funcionalidades que pueden incorporarse posteriormente se encuentran:
 
 Este proyecto fue desarrollado con fines **académicos y educativos**.
 
-Todos los componentes desarrollados forman parte del proyecto **Bingo ClaudeNova**.
+El código forma parte del proyecto **Bingo ClaudeNova**.
+
+---
+
+# 👨‍💻 Autores
+
+<p align="center">
+
+<strong>Andres Contreras</strong>
+
+<br>
+
+<strong>Wilmer Flores</strong>
+
+</p>
+
+---
+
+# 🔗 Enlaces
+
+### 📦 Repositorio
+
+<p align="center">
+<a href="https://github.com/ANDresC-1A/bingo-claudenova">
+  https://github.com/ANDresC-1A/bingo-claudenova
+</a>
+</p>
 
 ---
 
 <p align="center">
-  🎱 <strong>Bingo ClaudeNova</strong> 🎱
-  <br>
-  Plataforma web de Bingo multijugador en tiempo real
+
+🎱 <strong>Bingo ClaudeNova</strong> 🎱
+
+<br>
+
+Plataforma web de Bingo multijugador en tiempo real.
+
+<br><br>
+
+Desarrollado con ❤️ usando Python, Django y Django Channels.
+
 </p>
