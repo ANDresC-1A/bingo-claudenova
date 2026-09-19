@@ -778,41 +778,10 @@ En producción se puede utilizar un servidor como **Daphne**.
 
 ---
 
-# 🔒 Consideraciones de seguridad
 
-Para utilizar el proyecto en un entorno de producción se recomienda:
-
-- 🔑 Utilizar una `SECRET_KEY` segura.
-- 🚫 No publicar contraseñas reales.
-- 🔐 Configurar `DEBUG=False`.
-- 🌐 Configurar correctamente `ALLOWED_HOSTS`.
-- 🔒 Utilizar HTTPS.
-- 🔑 Utilizar variables de entorno para información sensible.
-- 🗄️ Utilizar una base de datos adecuada para producción.
-- 🛡️ Configurar correctamente los permisos de usuarios.
-- 🚫 No utilizar las credenciales de prueba en producción.
 
 ---
 
-# 📸 Capturas del proyecto
-
-Las imágenes utilizadas en este README se encuentran directamente en la raíz del repositorio:
-
-```text
-bingoclaudenova/
-│
-├── ini.jpeg
-├── sala.jpeg
-├── juego.jpeg
-└── admin.jpeg
-```
-
-| Archivo | Descripción |
-|---|---|
-| `ini.jpeg` | 🔐 Pantalla de inicio de sesión |
-| `sala.jpeg` | ⏳ Sala de espera |
-| `juego.jpeg` | 🎱 Partida de Bingo |
-| `admin.jpeg` | 👑 Panel administrativo |
 
 ---
 
